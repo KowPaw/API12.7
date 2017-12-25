@@ -23,6 +23,9 @@ body {
 .board h1 {
   	margin-left: 8px;
 }
+.create-column {
+	margin: 10px;
+}
 .column-container {
   	display: flex;
   	flex-direction: row;
@@ -39,11 +42,15 @@ body {
   	list-style: none;
   	position: relative;
 }
-.column-add-card {
+.column-title {
+	margin-left: 10px;
+}
+.column-add-card,
+.column-change-name {
   	cursor: pointer;
   	text-decoration: underline;
   	margin: 5px 8px;
-  	display: block;
+  	display: inline-block;
 }
 
 /* STYLE KARTY */
@@ -55,11 +62,12 @@ body {
   	padding: 4px;
   	overflow: hidden;
   	position: relative;
+  	background: yellow;
 }
 .card-list {
+  	border-top: 1px solid black;
   	list-style: none;
-  	margin: 5px;
-  	padding: 0px;
+  	padding: 5px;
 }
 .card-description {
   	margin: 2px 0;
@@ -71,4 +79,7 @@ body {
   	margin-bottom: 5px;
   	border: 2px solid lightgrey;
   	background-color: lightblue;
+}
+.card-change-name {
+	margin-top: 10px;
 }

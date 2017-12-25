@@ -39,7 +39,6 @@ Card.prototype = {
       		}
     	});
 	},
-	
 	renameCard: function() {
 		var self = this;
 		var cardName = prompt('Wpisz nowy opis');
@@ -51,7 +50,7 @@ Card.prototype = {
     			bootcamp_kanban_column_id: self.id
         	},
 			success: function(response){
-				location.reload();
+				self.element.children('p')[0].innerText = cardName;
 			}	
 		});
 	}

@@ -12,7 +12,7 @@ function Column(id, name) {
 		var columnCardList = $('<ul class="card-list"></ul>');
 		var columnDelete = $('<button class="btn-delete">x</button>');
 		var columnAddCard = $('<button class="column-add-card">Dodaj kartę</button>');
-		var columnChangeName = $('<button class="column-change-name">Zmień nazwę</button>');
+		var columnChangeName = $('<button class="column-change-name">Zmień nazwę kolumny</button>');
 
 		// PODPINANIE ODPOWIEDNICH ZDARZEŃ POD WĘZŁY
 		columnDelete.click(function() {
@@ -64,7 +64,6 @@ Column.prototype = {
       		}
     	});
 	},
-	
 	renameColumn: function() {
 		var self = this;
 		var columnName = prompt('Wpisz nową nazwę');
@@ -75,7 +74,7 @@ Column.prototype = {
 				name: columnName
 			},
 			success: function(response){
-				location.reload();
+				self.element.children('h2')[0].innerText = columnName;
 			}	
 		});
 	}
