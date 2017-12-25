@@ -12,6 +12,10 @@ function Card(id, name) {
 		var cardDescription = $('<p class="card-description"></p>');
 		var cardChangeName = $('<button class="card-change-name">Zmień opis</button>');
 		
+		card.mouseup(function(){
+			self.updateCardColumn();
+		});
+
 		cardDeleteBtn.click(function(){
 			self.removeCard();
 		});
@@ -46,12 +50,21 @@ Card.prototype = {
 			url: baseUrl + '/card/' + self.id,
 			method: 'PUT',
 			data: {
-            	name: cardName,
-    			bootcamp_kanban_column_id: self.id
+            	name: cardName
         	},
 			success: function(response){
 				self.element.children('p')[0].innerText = cardName;
 			}	
+		});
+	},
+	updateCardColumn: function(){
+        var self = this;
+		$.ajax({
+			url: baseUrl + '/card/' + self.id,
+			method: 'PUT',
+			data: {
+    			bootcamp_kanban_column_id: this.column.id
+        	}
 		});
 	}
 }
