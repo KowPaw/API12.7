@@ -23,7 +23,7 @@ $('.create-column')
         });
 	});
 	
-function initSortable() {
+function initSortable() {var self = this;
     $('.card-list').sortable({
       	connectWith: '.card-list',
       	placeholder: 'card-placeholder'

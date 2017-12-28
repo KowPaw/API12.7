@@ -3,6 +3,9 @@ var myHeaders = {
   	'X-Client-Id': '2693',
   	'X-Auth-Token': '7e02a48560b55c33f4f17832bf24c069'
 };
+var cardId;
+var card_Name;
+var cardColumnId;
 
 $.ajaxSetup({
 	headers: myHeaders

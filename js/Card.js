@@ -11,10 +11,6 @@ function Card(id, name) {
 		var cardDeleteBtn = $('<button class="btn-delete">x</button>');
 		var cardDescription = $('<p class="card-description"></p>');
 		var cardChangeName = $('<button class="card-change-name">Zmień opis</button>');
-		
-		card.mouseup(function(){
-			self.updateCardColumn();
-		});
 
 		cardDeleteBtn.click(function(){
 			self.removeCard();
@@ -23,6 +19,11 @@ function Card(id, name) {
 		cardChangeName.click(function() {
 			self.renameCard();
 		});
+
+		card.mouseup(function() {
+      		cardId = self.id;
+      		card_Name = self.name;
+      	});
 		
 		card.append(cardDeleteBtn);
 		cardDescription.text(self.name);
@@ -50,21 +51,12 @@ Card.prototype = {
 			url: baseUrl + '/card/' + self.id,
 			method: 'PUT',
 			data: {
-            	name: cardName
+            	name: cardName,
+            	bootcamp_kanban_column_id: cardColumnId
         	},
 			success: function(response){
 				self.element.children('p')[0].innerText = cardName;
 			}	
-		});
-	},
-	updateCardColumn: function(){
-        var self = this;
-		$.ajax({
-			url: baseUrl + '/card/' + self.id,
-			method: 'PUT',
-			data: {
-    			bootcamp_kanban_column_id: this.column.id
-        	}
 		});
 	}
 }
