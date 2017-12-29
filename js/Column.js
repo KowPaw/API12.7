@@ -19,23 +19,6 @@ function Column(id, name) {
 			self.deleteColumn();
 		});
 
-		columnCardList.mouseup(function() {
-			cardColumnId = self.id;
-		});
-
-		columnCardList.sortable({
-      		receive: function(event, ui) {
-      			$.ajax({
-					url: baseUrl + '/card/' + cardId,
-					method: 'PUT',
-					data: {
-						name: card_Name,
-            			bootcamp_kanban_column_id: self.id 
-        			}
-				});
-      		}
-    	});
-
 		columnChangeName.click(function() {
 			self.renameColumn();
 		});
