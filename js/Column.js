@@ -9,7 +9,7 @@ function Column(id, name) {
 		// TWORZENIE NOWYCH WĘZŁÓW
 		var column = $('<div class="column"></div>');
 		var columnTitle = $('<h2 class="column-title">' + self.name + '</h2>');
-		var columnCardList = $('<ul class="card-list" data-column-id = ' + self.id +'></ul>');
+		var columnCardList = $('<ul class="card-list"></ul>');
 		var columnDelete = $('<button class="btn-delete">x</button>');
 		var columnAddCard = $('<button class="column-add-card">Dodaj kartę</button>');
 		var columnChangeName = $('<button class="column-change-name">Zmień nazwę kolumny</button>');
@@ -23,6 +23,21 @@ function Column(id, name) {
 			self.renameColumn();
 		});
 		
+		columnCardList.sortable({
+	    	receive: function(event, ui) {
+	    		var cardId = ui.item.data('id');
+	    		var cardName = ui.item.data('name');
+    			$.ajax({
+					url: baseUrl + '/card/' + cardId,
+					method: 'PUT',
+					data: {
+						name: cardName,
+           				bootcamp_kanban_column_id: self.id 
+       				}
+				});
+    		}
+    	});
+
 		columnAddCard.click(function(event) {
 			var cardName = prompt('Wpisz nazwę karty');
 			event.preventDefault();

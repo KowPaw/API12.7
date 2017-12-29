@@ -8,7 +8,7 @@ function Card(id, name, columnId) {
 	this.element = createCard();
 
 	function createCard() {
-		var card = $('<li class="card"></li>');
+		var card = $('<li class="card" data-id="' + self.id + '" data-name="' + self.name +'""></li>');
 		var cardDeleteBtn = $('<button class="btn-delete">x</button>');
 		var cardDescription = $('<p class="card-description"></p>');
 		var cardChangeName = $('<button class="card-change-name">Zmień opis</button>');
@@ -20,23 +20,6 @@ function Card(id, name, columnId) {
 		cardChangeName.click(function() {
 			self.renameCard();
 		});
-
-   		$('.card-list').sortable({
-	    	receive: function(event, ui) {
-	    		var columnId = ui.item.parent().data('column-id');
-    			/*$.ajax({
-					url: baseUrl + '/card/' + self.id,
-					method: 'PUT',
-					data: {
-						name: self.name,
-           				bootcamp_kanban_column_id: self.columnId 
-       				}
-				});*/
-				console.log(self.id);
-				console.log(self.name);
-				console.log(columnId);
-    		}
-    	});
 
 		card.append(cardDeleteBtn);
 		cardDescription.text(self.name);
