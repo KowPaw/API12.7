@@ -23,14 +23,18 @@ function Card(id, name, columnId) {
 
    		$('.card-list').sortable({
 	    	receive: function(event, ui) {
-    			$.ajax({
+	    		var columnId = ui.item.parent().data('column-id');
+    			/*$.ajax({
 					url: baseUrl + '/card/' + self.id,
 					method: 'PUT',
 					data: {
 						name: self.name,
            				bootcamp_kanban_column_id: self.columnId 
        				}
-				});
+				});*/
+				console.log(self.id);
+				console.log(self.name);
+				console.log(columnId);
     		}
     	});
 

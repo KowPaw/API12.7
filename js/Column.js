@@ -9,7 +9,7 @@ function Column(id, name) {
 		// TWORZENIE NOWYCH WĘZŁÓW
 		var column = $('<div class="column"></div>');
 		var columnTitle = $('<h2 class="column-title">' + self.name + '</h2>');
-		var columnCardList = $('<ul class="card-list"></ul>');
+		var columnCardList = $('<ul class="card-list" data-column-id = ' + self.id +'></ul>');
 		var columnDelete = $('<button class="btn-delete">x</button>');
 		var columnAddCard = $('<button class="column-add-card">Dodaj kartę</button>');
 		var columnChangeName = $('<button class="column-change-name">Zmień nazwę kolumny</button>');
